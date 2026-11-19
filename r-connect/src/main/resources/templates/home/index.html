@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+       
+    </head>
+    <body>
+        <p> Welcome To R-Connect</p>
+        <h1>Welcome to Home 2026 <span th:text="${userName}">Zeenu</span></h1>
+        <h1>You are in <span th:utext="${location}">Kandy</span></h1>
+
+    <!-- string concatination in thymeleaf -->
+     <p th:utext="|This user ${userName} is from ${location}|">This user is from Jaffna</p>
+
+     <!-- to check if condition in thmeleaf -->
+    <div th:if="${userType} == 'Agent'"> 
+        hello Agent
+    </div>
+
+    <div th:unless="${userType} == 'Agent'"> 
+        hello buyer 
+    </div>
+    <!-- switch case in thymeleaf -->
+    <div th:switch="${userType}">
+        <p th:case="'Admin'">User is an admin</p>
+        <p th:case="'Buyer'">User is an buyer</p>
+        <p th:case="'Agent'">User is an agent</p>
+        <p th:case="'Owner'">User is an owner</p>
+        <!-- for default we give * -->
+        <p th:case="'*'">User is an someone</p>
+    </div>
+
+    <!-- loop read the contents -->
+     <ol>
+        <li th:each="property : ${propertyList}" th:text="${property}">Property</li>
+     </ol>
+
+     <!-- link in thymeleaf -->
+      <a href="/about"> Click to go to about page</a>
+      <div> 
+      <a th:href="@{/about}">Click to go to about page</a>
+      </div>
+      
+      <!-- to able to select language -->
+       
+
+    </body>
+</html>
